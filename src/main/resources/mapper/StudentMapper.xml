@@ -5,12 +5,18 @@
     <resultMap id="query_user" type="com.example.demo.Entity.User">
         <id column="cid" property="cid" />
         <result column="cname1" property="cname1" />
-    <result column="cname" property="cname" />
-    <result column="credit" property="credit" />
+        <result column="cname" property="cname" />
+        <result column="credit" property="credit" />
+        <result column="isread" property="isread" />
 </resultMap>
 
 
-
+    <update id="setReadStates" parameterType="String">
+        update course set isread=1
+        <if test="cid != null and cid != ''">
+            where cid=#{cid}
+        </if>
+    </update>
 
 
 

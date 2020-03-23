@@ -31,6 +31,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Integer setReadStates(String cid) {
+        return studentMapper.setReadStates(cid);
+    }
+
+    @Override
     public User queryUserList1(String cid) {
      return studentMapper.queryStudentList1(cid);
 

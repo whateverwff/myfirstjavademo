@@ -16,8 +16,13 @@ public class LoginServiceImpl implements LoginService {
 
 
     @Override
-    public Map<String, Object> login(UserInfo userInfo) {
+    public UserInfo login(UserInfo userInfo) {
        return  loginmapper.login(userInfo);
 
+    }
+
+    @Override
+    public Integer register(UserInfo userInfo) {
+        return loginmapper.register(userInfo);
     }
 }

@@ -8,9 +8,13 @@
         <result column="psd" property="psd" />
     </resultMap>
 
-    <select id="login" resultType="java.util.Map" parameterType="com.example.demo.Entity.UserInfo">
+    <select id="login" resultMap="loginuserinfo" parameterType="com.example.demo.Entity.UserInfo">
         select * from userinfo where username=#{username} and psd = #{psd}
     </select>
+
+    <insert id="register" parameterType="com.example.demo.Entity.UserInfo">
+        insert into userinfo (id,username,psd) values (null,#{username},#{psd})
+    </insert>
 
 
 

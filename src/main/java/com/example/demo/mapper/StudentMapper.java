@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.Entity.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -14,4 +15,6 @@ public interface StudentMapper {
     User queryStudentList1(String  cid);
 
     List<User> queryStudentList2();
+
+    Integer setReadStates(@Param(value = "cid") String cid);
 }

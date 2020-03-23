@@ -7,8 +7,18 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String cid;
+
+    public int getIsread() {
+        return isread;
+    }
+
+    public void setIsread(int isread) {
+        this.isread = isread;
+    }
+
     private String cname;
     private String credit;
+    private int isread;
 
     public String getCid() {
         return cid;

@@ -17,11 +17,27 @@ public class LoginController {
 
     @RequestMapping("/login")
     public Result login(@RequestBody UserInfo userinfo){
-        Map<String, Object> result = loginService.login(userinfo);
+        UserInfo result = loginService.login(userinfo);
         if(result != null){
-           return new Result();
+           return new Result(Result.CODE_SUCCESS,"登录成功");
         }
-        return new Result(Result.CODE__ERROR , "登录失败请检查");
+        return new Result(Result.CODE__ERROR , "账号或密码错误");
 
     }
+
+
+    @RequestMapping("/register")
+    public Result register(@RequestBody UserInfo userinfo){
+        Integer result = loginService.register(userinfo);
+        if(result == 1){
+            return new Result(Result.CODE_SUCCESS,"注册成功");
+        }
+        return new Result(Result.CODE__ERROR,"注册失败");
+    }
+
+    @RequestMapping("/hello")
+    public String hello(){
+        return "hello world";
+    }
+
 }
