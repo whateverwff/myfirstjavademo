@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface LoginMapper {
     UserInfo login(UserInfo userInfo);
     Integer register(UserInfo userinfo);
+    UserInfo registerVerify(String username);
 }

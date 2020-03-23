@@ -8,6 +8,8 @@
         <result column="psd" property="psd" />
     </resultMap>
 
+
+
     <select id="login" resultMap="loginuserinfo" parameterType="com.example.demo.Entity.UserInfo">
         select * from userinfo where username=#{username} and psd = #{psd}
     </select>
@@ -16,6 +18,9 @@
         insert into userinfo (id,username,psd) values (null,#{username},#{psd})
     </insert>
 
+    <select id="registerVerify" resultMap="loginuserinfo" parameterType="com.example.demo.Entity.UserInfo">
+        select * from userinfo where username=#{username}
+    </select>
 
 
 
