@@ -8,13 +8,14 @@
         <result column="cname" property="cname" />
         <result column="credit" property="credit" />
         <result column="isread" property="isread" />
-</resultMap>
+        <result column="subscribe" property="subscribe" />
+    </resultMap>
 
 
     <update id="setReadStates" parameterType="String">
-        update course set isread=1
+        update middletable set isread=1 where uid=#{uid}
         <if test="cid != null and cid != ''">
-            where cid=#{cid}
+            and  cid=#{cid}
         </if>
     </update>
 
@@ -23,8 +24,15 @@
 
 
     <select id="queryStudentList" resultMap="query_user">
+select c.cid,c.cname,c.credit,(select subscribe from middletable where c.cid=middletable.cid and middletable.uid=18) as subscribe from course c
+--         select c.cid,c.cname,c.credit,(select isread from middletable where c.cid=middletable.cid and middletable.uid=18) as isread from course c
+--            select * from course;
+--         select c.* from userinfo u INNER JOIN middletable m on 18=m.uid INNER JOIN course c on c.cid=m.cid
 
-           select * from course;
+    </select>
+
+    <select id="queryUserStudent" resultMap="query_user">
+        select c.cid,u.id,c.cname,m.isread from userinfo u INNER JOIN middletable m on u.id=m.uid INNER JOIN course c on c.cid=m.cid where u.id=#{uid}
 
     </select>
 

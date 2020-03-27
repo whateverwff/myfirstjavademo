@@ -18,7 +18,17 @@ public class User implements Serializable {
 
     private String cname;
     private String credit;
+
+    public int getSubscribe() {
+        return subscribe;
+    }
+
+    public void setSubscribe(int subscribe) {
+        this.subscribe = subscribe;
+    }
+
     private int isread;
+    private int subscribe;
 
     public String getCid() {
         return cid;

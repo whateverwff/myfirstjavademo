@@ -3,7 +3,9 @@ package com.example.demo.controller;
 
 import com.example.demo.Entity.User;
 import com.example.demo.Util.Result;
+import com.example.demo.controller.form.StudentCourseForm;
 import com.example.demo.service.StudentService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Service;
@@ -20,24 +22,46 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    /**
+     * 查询用户所选课程
+     * @param ur
+     * @return
+     */
     @RequestMapping("/student/query")
     public List<User> queryStudent(User ur) {
         List<User> user = studentService.queryUserList();
+        
+        return user;
+    }
+
+    @RequestMapping("/student/userquery")
+    public List<User> queryUserStudent(@RequestParam(value = "uid") String uid) {
+        List<User> user = studentService.queryUserStudent(uid);
         return user;
     }
 
     @RequestMapping("/student/setreadstates")
-    public void setReadStates(@RequestParam(value = "cid") String cid) {
-        Integer result = studentService.setReadStates(cid);
+    public void setReadStates(@RequestParam(value = "cid") String cid, @RequestParam(value = "uid") String uid) {
+        Integer result = studentService.setReadStates(cid, uid);
     }
 
 
-    @RequestMapping("/student/query1/{cid}")
-    public User queryStudent(@PathVariable(value = "cid") String cid) {
+    @RequestMapping("/student/query1")
+    public User queryStudent(@RequestParam(value = "uid") String uid) {
         //List<User> list = new ArrayList<>();
-        User user = studentService.queryUserList1(cid);
+        User user = studentService.queryUserList1(uid);
         // list.add(user);
         return user;
+    }
+
+    /**
+     * 保存用户所选课程
+     * @param
+     */
+    @RequestMapping("/student/setcourse")
+    public void setCourse(@RequestBody StudentCourseForm form){
+        Integer result = studentService.setUserCourse(form);
+
     }
 
 

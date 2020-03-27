@@ -15,29 +15,33 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
+    /**
+     * 登录
+     * @param userinfo
+     * @return
+     */
     @RequestMapping("/login")
-    public Result login(@RequestBody UserInfo userinfo){
+    public Result login(@RequestBody UserInfo userinfo) {
         UserInfo result = loginService.login(userinfo);
-        if(result != null){
-           return new Result(Result.CODE_SUCCESS,"登录成功");
+        if (result != null) {
+            return new Result(Result.CODE_SUCCESS, "登录成功");
         }
-        return new Result(Result.CODE__ERROR , "账号或密码错误");
+        return new Result(Result.CODE__ERROR, "账号或密码错误");
 
     }
 
-
+    /**
+     * 注册
+     * @param userinfo
+     * @return
+     */
     @RequestMapping("/register")
-    public Result register(@RequestBody UserInfo userinfo){
+    public Result register(@RequestBody UserInfo userinfo) {
         Integer result = loginService.register(userinfo);
-        if(result == 1){
-            return new Result(Result.CODE_SUCCESS,"注册成功");
+        if (result == 1) {
+            return new Result(Result.CODE_SUCCESS, "注册成功");
         }
-        return new Result(Result.CODE__ERROR,"注册失败");
-    }
-
-    @RequestMapping("/hello")
-    public String hello(){
-        return "hello world";
+        return new Result(Result.CODE__ERROR, "注册失败");
     }
 
 }
