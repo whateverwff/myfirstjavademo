@@ -21,12 +21,13 @@ public class LoginController {
      * @return
      */
     @RequestMapping("/login")
-    public Result login(@RequestBody UserInfo userinfo) {
+    public Map<String,Object> login(@RequestBody UserInfo userinfo) {
         UserInfo result = loginService.login(userinfo);
         if (result != null) {
-            return new Result(Result.CODE_SUCCESS, "登录成功");
+            result.setPsd(null);
+            return Result.successResult("登陆成功",result);
         }
-        return new Result(Result.CODE__ERROR, "账号或密码错误");
+        return Result.failingResult("用户名或密码错误");
 
     }
 
@@ -36,12 +37,12 @@ public class LoginController {
      * @return
      */
     @RequestMapping("/register")
-    public Result register(@RequestBody UserInfo userinfo) {
+    public Map<String,Object> register(@RequestBody UserInfo userinfo) {
         Integer result = loginService.register(userinfo);
         if (result == 1) {
-            return new Result(Result.CODE_SUCCESS, "注册成功");
+            return Result.successResult("注册成功");
         }
-        return new Result(Result.CODE__ERROR, "注册失败");
+        return Result.failingResult("注册失败");
     }
 
 }

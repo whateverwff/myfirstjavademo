@@ -1,71 +1,32 @@
 package com.example.demo.Util;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Result implements Serializable  {
 
-   public static final int CODE_SUCCESS = 200;  //成功
-   public static final int CODE__ERROR= 400;  //失败
+    public final static int successCode=200;
+    public final static int failingCode=400;
 
-
-
-    private int code;
-    private String errorMsg;
-    private Exception e;
-    private Boolean resultflag;
-
-    public Result(int code, String errorMsg, Exception e, Boolean resultflag) {
-        this.code = code;
-        this.errorMsg = errorMsg;
-        this.e = e;
-        this.resultflag = resultflag;
+    public static Map<String , Object> result(Object data,String message ,int resultCode ,Boolean success){
+        Map<String,Object> result=new HashMap<>();
+        result.put("success", success);
+        result.put("statusCode", resultCode);
+        result.put("message", message);
+        result.put("data",data);
+        return result;
     }
 
-    public Result() {
-        code=200;
-        errorMsg="登录成功";
+    public static Map<String , Object> successResult(String message,Object data){
+        return result(data,message,successCode,true);
     }
 
-    public Result(int code, String errorMsg, Exception e) {
-        this.code = code;
-        this.errorMsg = errorMsg;
-        this.e = e;
+    public static Map<String , Object> successResult(String message){
+        return result(null,message,successCode,true);
     }
 
-    public Result(int code, String errorMsg) {
-        this.code = code;
-        this.errorMsg = errorMsg;
-    }
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getErrorMsg() {
-        return errorMsg;
-    }
-
-    public void setErrorMsg(String errorMsg) {
-        this.errorMsg = errorMsg;
-    }
-
-    public Exception getE() {
-        return e;
-    }
-
-    public void setE(Exception e) {
-        this.e = e;
-    }
-
-    public Boolean getResultflag() {
-        return resultflag;
-    }
-
-    public void setResultflag(Boolean resultflag) {
-        this.resultflag = resultflag;
+    public static Map<String , Object> failingResult(String message){
+        return result(null,message,failingCode,false);
     }
 }

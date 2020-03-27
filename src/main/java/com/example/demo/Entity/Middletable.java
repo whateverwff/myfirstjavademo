@@ -7,7 +7,13 @@ public class Middletable {
     private int isread;
     private int subscribe;
 
-    public Middletable() {
+
+    public Middletable(int id, int uid, int cid, int isread, int subscribe) {
+        this.id = id;
+        this.uid = uid;
+        this.cid = cid;
+        this.isread = isread;
+        this.subscribe = subscribe;
     }
 
     public int getId() {
@@ -16,14 +22,6 @@ public class Middletable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Middletable(int id, int uid, int cid, int isread, int subscribe) {
-        this.id = id;
-        this.uid = uid;
-        this.cid = cid;
-        this.isread = isread;
-        this.subscribe = subscribe;
     }
 
     public int getUid() {

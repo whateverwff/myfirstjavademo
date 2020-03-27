@@ -1,22 +1,14 @@
 package com.example.demo.service;
 
 
-import com.example.demo.Entity.User;
+import com.example.demo.Entity.Course;
 import com.example.demo.controller.form.StudentCourseForm;
 
 import java.util.List;
+import java.util.Map;
 
 public interface StudentService {
 
-    List<User> queryUserList();
+    List<Map<String,Object>> queryUserList(Integer id);
 
-    User queryUserList1(String cid);
-
-    List<User> queryUserList2();
-
-    Integer setReadStates(String cid,String uid);
-
-    List<User> queryUserStudent(String uid);
-
-    Integer setUserCourse(StudentCourseForm form);
 }

@@ -10,10 +10,6 @@ public class UserInfo {
         this.username = username;
         this.psd = psd;
     }
-    public UserInfo(){
-
-    }
-
     public int getId() {
         return id;
     }
