@@ -24,3 +24,4 @@ public class StudentCourseForm {
         this.list = list;
     }
 }
+

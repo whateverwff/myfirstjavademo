@@ -33,6 +33,7 @@ public class StudentController {
         List<Map<String,Object>> result = studentService.queryUserList(id);
         return Result.successResult("success",result);
     }
+
     @PostMapping("/save/userCourses")
     public Map<String, Object> saveUserCourses(@RequestBody StudentCourseForm form) {
         studentService.savaUserCourses(form);
