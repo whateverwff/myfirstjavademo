@@ -1,8 +1,6 @@
 package com.example.demo.mapper;
 
 
-import com.example.demo.Entity.Course;
-import com.example.demo.controller.form.StudentCourseForm;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
