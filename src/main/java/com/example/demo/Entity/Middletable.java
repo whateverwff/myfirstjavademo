@@ -7,6 +7,8 @@ public class Middletable {
     private int isread;
     private int subscribe;
 
+    public Middletable() {
+    }
 
     public Middletable(int id, int uid, int cid, int isread, int subscribe) {
         this.id = id;

@@ -11,6 +11,9 @@ public class Course {
 
     private String cname;
 
+    public Course() {
+    }
+
     public Course(Integer cid, String cname) {
         this.cid = cid;
         this.cname = cname;

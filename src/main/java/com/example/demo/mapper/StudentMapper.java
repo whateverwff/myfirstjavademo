@@ -1,6 +1,7 @@
 package com.example.demo.mapper;
 
 
+import com.example.demo.Entity.Middletable;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -13,4 +14,5 @@ public interface StudentMapper {
 
     List<Map<String,Object>> queryStudentList(Integer id);
 
+    int insertMiddletable(Middletable middletable);
 }
