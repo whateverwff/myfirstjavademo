@@ -15,4 +15,8 @@ public interface StudentMapper {
     List<Map<String,Object>> queryStudentList(Integer id);
 
     int insertMiddletable(Middletable middletable);
+
+    List<Map<String,Object>> getAllCourse();
+
+    List<Middletable> selectCourseById(Middletable middletable);
 }

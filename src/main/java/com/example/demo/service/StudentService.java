@@ -11,4 +11,6 @@ public interface StudentService {
     List<Map<String,Object>> queryUserList(Integer id);
 
     void savaUserCourses(StudentCourseForm form);
+
+    List<Map<String,Object>> getAllCourse();
 }

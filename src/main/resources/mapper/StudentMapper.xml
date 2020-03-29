@@ -19,5 +19,13 @@
         where u.id=#{id}
     </select>
 
+    <select id="selectCourseById" resultType="com.example.demo.Entity.Middletable">
+        select * from middletable where uid=#{uid} and cid=#{cid}
+    </select>
+
+    <select id="getAllCourse" resultType="map">
+        select * from course
+    </select>
+
 
 </mapper>

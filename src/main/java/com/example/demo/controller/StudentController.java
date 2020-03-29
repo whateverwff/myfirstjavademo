@@ -1,14 +1,13 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.Entity.Course;
 import com.example.demo.Util.Result;
 import com.example.demo.controller.form.StudentCourseForm;
 import com.example.demo.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -34,8 +33,44 @@ public class StudentController {
         return Result.successResult("success",result);
     }
 
-    @PostMapping("/save/userCourses")
+    /**
+     *设为已学
+     */
+
+    public void setCourseReadByCid(){
+
+    }
+
+    /**
+     * 获取所有课程
+     */
+    @RequestMapping("/student/getallcoursebyid")
+    public Map<String,Object> getAllCourseById(Integer id){
+        List<Map<String,Object>> result = studentService.queryUserList(id);
+        List<Map<String,Object>> list = studentService.getAllCourse();
+        list.forEach((item)->{
+            result.forEach(items -> {
+                if(item.get("cid").equals(items.get("cid"))){
+                    item.put("subscription",1);
+                }
+            });
+            if(item.get("subscription") == null){
+                item.put("subscription",0);
+            }
+        });
+        return Result.successResult("success",list);
+    }
+
+    /**
+     * 保存用户选择的课程
+     * @param form
+     * @return
+     */
+    @PostMapping("/student/userCourses")
     public Map<String, Object> saveUserCourses(@RequestBody StudentCourseForm form) {
+        if(form == null){
+            return Result.failingResult("用户为空");
+        }
         studentService.savaUserCourses(form);
         return Result.successResult("success");
     }

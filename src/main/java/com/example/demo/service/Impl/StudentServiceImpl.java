@@ -25,13 +25,24 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void savaUserCourses(StudentCourseForm form) {
+        List<Map<String,Object>> list = studentMapper.queryStudentList(form.getId());
+
         form.getList().stream().peek(item->{
             Middletable middletable=new Middletable();
             middletable.setUid(form.getId());
             middletable.setCid(item);
             middletable.setIsread(0);
             middletable.setSubscribe(1);
-            studentMapper.insertMiddletable(middletable);
+            List<Middletable> m = studentMapper.selectCourseById(middletable);
+            if(m == null || m.size() == 0){
+                studentMapper.insertMiddletable(middletable);
+            }
         }).collect(Collectors.toList());
+
+    }
+
+    @Override
+    public List<Map<String,Object>> getAllCourse() {
+        return studentMapper.getAllCourse();
     }
 }
