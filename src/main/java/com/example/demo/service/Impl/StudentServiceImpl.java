@@ -25,8 +25,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void savaUserCourses(StudentCourseForm form) {
-        List<Map<String,Object>> list = studentMapper.queryStudentList(form.getId());
-
+        studentMapper.deleteCourseById(form.getId());
         form.getList().stream().peek(item->{
             Middletable middletable=new Middletable();
             middletable.setUid(form.getId());
@@ -38,8 +37,8 @@ public class StudentServiceImpl implements StudentService {
                 studentMapper.insertMiddletable(middletable);
             }
         }).collect(Collectors.toList());
-
     }
+
 
     @Override
     public List<Map<String,Object>> getAllCourse() {

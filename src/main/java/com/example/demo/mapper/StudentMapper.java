@@ -19,4 +19,6 @@ public interface StudentMapper {
     List<Map<String,Object>> getAllCourse();
 
     List<Middletable> selectCourseById(Middletable middletable);
+
+    Integer deleteCourseById(Integer id);
 }
