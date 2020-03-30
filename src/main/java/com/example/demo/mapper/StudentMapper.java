@@ -21,4 +21,8 @@ public interface StudentMapper {
     List<Middletable> selectCourseById(Middletable middletable);
 
     Integer deleteCourseById(Integer id);
+
+    void setCourseReadByCid(String uid,String cid);
+
+    void updateMiddletable(Middletable middletable);
 }

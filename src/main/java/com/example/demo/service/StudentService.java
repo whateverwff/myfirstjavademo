@@ -13,4 +13,6 @@ public interface StudentService {
     void savaUserCourses(StudentCourseForm form);
 
     List<Map<String,Object>> getAllCourse();
+
+    void setCourseReadByCid(String uid,String cid);
 }

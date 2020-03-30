@@ -27,9 +27,20 @@
         select * from course
     </select>
 
-    <delete id="deleteCourseById" parameterType="int">
-        delete form middletable where uid=#{id}
-    </delete>
+    <update id="setCourseReadByCid">
+        update middletable set isread=1 where uid=#{uid}
+        <if test="cid != null and cid != ''">
+            and cid=#{cid}
+        </if>
+    </update>
+
+    <update id="updateMiddletable">
+        update middletable set subscribe=1 where cid=#{cid}
+    </update>
+
+    <update id="deleteCourseById">
+        update middletable set subscribe=0 where uid=#{uid}
+    </update>
 
 
 </mapper>

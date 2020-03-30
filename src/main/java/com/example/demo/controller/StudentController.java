@@ -36,9 +36,9 @@ public class StudentController {
     /**
      *设为已学
      */
-
-    public void setCourseReadByCid(){
-
+    @RequestMapping("/student/setreadstates")
+    public void setCourseReadByCid(@RequestParam("uid") String uid,@RequestParam("cid") String cid){
+        studentService.setCourseReadByCid(uid,cid);
     }
 
     /**
@@ -47,18 +47,18 @@ public class StudentController {
     @RequestMapping("/student/getallcoursebyid")
     public Map<String,Object> getAllCourseById(Integer id){
         List<Map<String,Object>> result = studentService.queryUserList(id);
-        List<Map<String,Object>> list = studentService.getAllCourse();
-        list.forEach((item)->{
-            result.forEach(items -> {
-                if(item.get("cid").equals(items.get("cid"))){
-                    item.put("subscription",1);
-                }
-            });
-            if(item.get("subscription") == null){
-                item.put("subscription",0);
-            }
-        });
-        return Result.successResult("success",list);
+//        List<Map<String,Object>> list = studentService.getAllCourse();
+//        list.forEach((item)->{
+//            result.forEach(items -> {
+//                if(item.get("cid").equals(items.get("cid"))){
+//                    item.put("subscription",1);
+//                }
+//            });
+//            if(item.get("subscription") == null){
+//                item.put("subscription",0);
+//            }
+//        });
+        return Result.successResult("success",result);
     }
 
     /**

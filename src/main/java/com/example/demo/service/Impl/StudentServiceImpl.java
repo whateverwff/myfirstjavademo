@@ -35,6 +35,8 @@ public class StudentServiceImpl implements StudentService {
             List<Middletable> m = studentMapper.selectCourseById(middletable);
             if(m == null || m.size() == 0){
                 studentMapper.insertMiddletable(middletable);
+            }else{
+                studentMapper.updateMiddletable(middletable);
             }
         }).collect(Collectors.toList());
     }
@@ -43,5 +45,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Map<String,Object>> getAllCourse() {
         return studentMapper.getAllCourse();
+    }
+
+    @Override
+    public void setCourseReadByCid(String uid, String cid) {
+        studentMapper.setCourseReadByCid(uid,cid);
     }
 }
