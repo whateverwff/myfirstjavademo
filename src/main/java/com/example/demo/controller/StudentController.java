@@ -42,23 +42,22 @@ public class StudentController {
     }
 
     /**
-     * 获取所有课程
+     * 获取用户所有课程
      */
     @RequestMapping("/student/getallcoursebyid")
     public Map<String,Object> getAllCourseById(Integer id){
         List<Map<String,Object>> result = studentService.queryUserList(id);
-//        List<Map<String,Object>> list = studentService.getAllCourse();
-//        list.forEach((item)->{
-//            result.forEach(items -> {
-//                if(item.get("cid").equals(items.get("cid"))){
-//                    item.put("subscription",1);
-//                }
-//            });
-//            if(item.get("subscription") == null){
-//                item.put("subscription",0);
-//            }
-//        });
         return Result.successResult("success",result);
+    }
+
+    /**
+     * 获取课程表所有课程
+     * @return
+     */
+    @RequestMapping("/student/getallcourse")
+    public Map<String,Object> getAllCourse(){
+        List<Map<String,Object>> list = studentService.queryCourse();
+        return Result.successResult("success",list);
     }
 
     /**

@@ -25,4 +25,6 @@ public interface StudentMapper {
     void setCourseReadByCid(String uid,String cid);
 
     void updateMiddletable(Middletable middletable);
+
+    List<Map<String,Object>> queryCourse();
 }

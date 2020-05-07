@@ -51,4 +51,9 @@ public class StudentServiceImpl implements StudentService {
     public void setCourseReadByCid(String uid, String cid) {
         studentMapper.setCourseReadByCid(uid,cid);
     }
+
+    @Override
+    public List<Map<String, Object>> queryCourse() {
+        return studentMapper.queryCourse();
+    }
 }

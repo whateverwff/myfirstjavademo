@@ -28,7 +28,7 @@
     </select>
 
     <update id="setCourseReadByCid">
-        update middletable set isread=1 where uid=#{uid}
+        update middletable set isread=1 where uid=#{uid} and subscribe=1
         <if test="cid != null and cid != ''">
             and cid=#{cid}
         </if>
@@ -42,5 +42,8 @@
         update middletable set subscribe=0 where uid=#{uid}
     </update>
 
+    <select id="queryCourse" resultType="com.example.demo.Entity.Course">
+        select * from course
+    </select>
 
 </mapper>

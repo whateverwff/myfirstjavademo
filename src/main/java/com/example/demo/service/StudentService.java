@@ -15,4 +15,5 @@ public interface StudentService {
     List<Map<String,Object>> getAllCourse();
 
     void setCourseReadByCid(String uid,String cid);
+    List<Map<String,Object>> queryCourse();
 }
